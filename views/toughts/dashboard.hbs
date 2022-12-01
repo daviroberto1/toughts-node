@@ -1,0 +1,37 @@
+<div class="dashboard">
+  <div class="title-container">
+    <h2>Dashboard</h2>
+    <a href="/toughts/add" class="btn">Criar pensamento</a>
+  </div>
+  <h3>Seus pensamentos</h3>
+  <ul>
+    {{#each toughts}}
+      <li>
+        <span class="label">{{this.title}}</span>
+        <div class="like-box">
+          {{#if this.userLike}}
+            <i class="bi bi-hand-thumbs-up-fill selected-like"></i>
+          {{else}}
+            <i class="bi bi-hand-thumbs-up"></i>
+          {{/if}}
+          {{#if this.userDeslike}}
+            <i class="bi bi-hand-thumbs-down-fill selected-deslike"></i>
+          {{else}}
+            <i class="bi bi-hand-thumbs-down"></i>
+          {{/if}}
+        </div>
+        <span class="actions">
+          <a href="/toughts/edit/{{this.id}}" class="btn">Editar</a>
+          <form action="/toughts/remove" method="POST">
+            <input type="hidden" name="id" value="{{this.id}}" />
+            <input type="submit" value="Excluir" class="btn" />
+          </form>
+        </span>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if emptyToughts}}
+    <p>Ainda não há nenhum pensamento seu, comece a criar
+      <a href="/toughts/add">aqui!</a></p>
+  {{/if}}
+</div>
