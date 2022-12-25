@@ -40,7 +40,7 @@
         <div class="like-container">
           <div class="like-box">
             <span class="likes-number">{{this.like}}</span>
-            <form action="/toughts/likePost" method="POST">
+            <form action="/userLikePost" method="POST">
               <button type="submit">
                 <input type="hidden" name="toughtId" value="{{this.id}}" />
                 <input
@@ -63,7 +63,7 @@
           </div>
           <div class="like-box">
             <span class="likes-number">{{this.deslike}}</span>
-            <form action="/toughts/deslikePost" method="POST">
+            <form action="/userDeslikePost" method="POST">
               <button type="submit">
                 <input type="hidden" name="toughtId" value="{{this.id}}" />
                 <input

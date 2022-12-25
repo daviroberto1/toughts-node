@@ -8,17 +8,53 @@
     {{#each toughts}}
       <li>
         <span class="label">{{this.title}}</span>
-        <div class="like-box">
-          {{#if this.userLike}}
-            <i class="bi bi-hand-thumbs-up-fill selected-like"></i>
-          {{else}}
-            <i class="bi bi-hand-thumbs-up"></i>
-          {{/if}}
-          {{#if this.userDeslike}}
-            <i class="bi bi-hand-thumbs-down-fill selected-deslike"></i>
-          {{else}}
-            <i class="bi bi-hand-thumbs-down"></i>
-          {{/if}}
+        <div class="like-container">
+          <div class="like-box">
+            <span class="likes-number">{{this.like}}</span>
+            <form action="/userLikePost" method="POST">
+              <button type="submit">
+                <input type="hidden" name="toughtId" value="{{this.id}}" />
+                <input
+                  type="hidden"
+                  name="likeStatus"
+                  value="{{this.userLike}}"
+                />
+                <input
+                  type="hidden"
+                  name="deslikeStatus"
+                  value="{{this.userDeslike}}"
+                />
+                {{#if this.userLike}}
+                  <i class="bi bi-hand-thumbs-up-fill selected-like"></i>
+                {{else}}
+                  <i class="bi bi-hand-thumbs-up"></i>
+                {{/if}}
+              </button>
+            </form>
+          </div>
+          <div class="like-box">
+            <span class="likes-number">{{this.deslike}}</span>
+            <form action="/userDeslikePost" method="POST">
+              <button type="submit">
+                <input type="hidden" name="toughtId" value="{{this.id}}" />
+                <input
+                  type="hidden"
+                  name="likeStatus"
+                  value="{{this.userLike}}"
+                />
+                <input
+                  type="hidden"
+                  name="deslikeStatus"
+                  value="{{this.userDeslike}}"
+                />
+                {{#if this.userDeslike}}
+                  <i class="bi bi-hand-thumbs-down-fill selected-deslike"></i>
+                {{else}}
+                  <i class="bi bi-hand-thumbs-down"></i>
+                {{/if}}
+              </button>
+            </form>
+          </div>
         </div>
         <span class="actions">
           <a href="/toughts/edit/{{this.id}}" class="btn">Editar</a>

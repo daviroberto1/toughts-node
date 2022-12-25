@@ -1,9 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const AuthController = require('../controllers/UserLikeController')
+const UserLikeController = require('../controllers/UserLikeController')
+
+// helpers 
+const checkAuth = require('../helpers/auth').checkAuth
 
 // controller
-
-router.get('/login', AuthController.login);
+router.post('/userLikePost', checkAuth, UserLikeController.userLikePost);
+router.post('/userDeslikePost',checkAuth, UserLikeController.userDeslikePost);
 
 module.exports = router;
